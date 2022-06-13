@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-6">
+        <form action="" (ngSubmit)="getPokemonImgUrl(thisSelect)">
+            <select class="form-select mt-4" id="validationCustom04" required #thisSelect>
+                <option selected disabled value="">Choose by type:</option>
+                <option *ngFor="let item of pokemon_scroll?.results;" >{{item.name}}</option>
+            </select>
+            <button class="btn btn-primary mt-2" type="submit">Search   </button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="pokemonsSearched" class="row">
+    <div *ngFor="let item of pokemonUrl;let i = index" class="col-2 card mx-4 mt-4 animate__animated animate__fadeIn">
+        <img [src]="item.urlImg" class="card-img-top animate__animated animate__fadeIn" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{item.name | titlecase}}</h5>
+            <a href="" class="btn btn-primary mt-3">See pokemon stats...</a>
+        </div>
+    </div>
+</div>

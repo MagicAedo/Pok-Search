@@ -1,0 +1,39 @@
+
+
+<div *ngIf="!pokemon_state && pokemonSearched;" class="row">
+    <div class="col mt-5">
+        <div class="card mx-auto animate__animated animate__fadeIn" style="width: 18rem;">
+            <img [src]="pokemonSearched.sprites.front_default" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{pokemonSearched.name | titlecase}}</h5>
+                <p class="card-text">Wow, look what you caught!</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Type: {{pokemonSearched.types[0].type.name | titlecase}} </li>
+                <li class="list-group-item">Weight: {{pokemonSearched.weight}} lb</li>
+                <li class="list-group-item">Height: {{pokemonSearched.height}} ft</li>
+            </ul>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let item of pokemonSearched.stats" class="list-group-item">Base {{item.stat.name}}:
+                    {{item.base_stat}}</li>
+            </ul>
+            <div class="card-body">
+                <h6>Abilities</h6>
+                <span *ngFor="let item of pokemonSearched.abilities"
+                    class="badge bg-primary mx-1">{{item.ability.name}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="pokemon_state" class="row animate__animated animate__fadeIn">
+    <div class="col-6 mt-4">
+        <div class="alert alert-danger" role="alert">
+            Wrong search, please check your pokemon's name...
+        </div>
+    </div>
+
+</div>
+
+

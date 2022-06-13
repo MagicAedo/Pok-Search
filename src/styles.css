@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+#sidebar { 
+    height: 100%;
+    min-height: 100vh;
+    min-width: 180px;
+    background-color: #3B4CCA;
+
+}
+
+
+#pokeStyle{
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #FFDE00;
+
+}
+
+.activo{ 
+    background-color: #CC0000;
+    color: white;
+}
+ 
+img{
+    display: block;
+    margin: 0px auto;
+   }
+   
+span{ 
+    font-weight: bold;
+}
