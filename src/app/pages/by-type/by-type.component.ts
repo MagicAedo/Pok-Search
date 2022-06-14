@@ -4,6 +4,7 @@ import { PokemonServicesService } from '../../services/pokemon-services.service'
 import { PokemonTypeInterface } from '../../Interfaces/pokemon-type.interface';
 import { PokemonTypeEsp } from '../../Interfaces/pokemo-type-esp.interface';
 import { pokemonUrl } from 'src/app/Interfaces/pokemonNameUrl.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-by-type',
@@ -48,7 +49,7 @@ export class ByTypeComponent implements OnInit {
   }}
 
 
-  constructor(private pokemonService: PokemonServicesService) { }
+  constructor(private pokemonService: PokemonServicesService,private router: Router) { }
 
   ngOnInit(): void {
     this.pokemonService.searchByTypeScroll().subscribe(this.pokemonObserverScroll);
@@ -56,6 +57,7 @@ export class ByTypeComponent implements OnInit {
 
   getPokemonImgUrl(item: HTMLSelectElement) {
     this.pokemonService.searchByType(item.value).subscribe(this.pokemonObserver);
+
     }
 
 

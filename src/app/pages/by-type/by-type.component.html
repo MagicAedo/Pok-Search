@@ -15,7 +15,7 @@
         <img [src]="item.urlImg" class="card-img-top animate__animated animate__fadeIn" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{item.name | titlecase}}</h5>
-            <a href="" class="btn btn-primary mt-3">See pokemon stats...</a>
+            <a [routerLink]="['/pokemon',item.name]" class="btn btn-primary mt-3">See pokemon stats...</a>
         </div>
     </div>
 </div>

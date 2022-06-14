@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable, tap, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { PokemonInterface } from '../Interfaces/pokemon.interface';
 import { PokemonTypeInterface } from '../Interfaces/pokemon-type.interface';
-import { PokemonTypeEsp } from '../Interfaces/pokemo-type-esp.interface';
+import { Pokemon, PokemonTypeEsp } from '../Interfaces/pokemo-type-esp.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,9 @@ import { PokemonTypeEsp } from '../Interfaces/pokemo-type-esp.interface';
 export class PokemonServicesService {
 
   private apiUrl: string = 'https://pokeapi.co/api/v2'; //We set the PokéApi url, it will be use later when we do our requests
-
+  
+  // private dataSource:BehaviorSubject<string> = new BehaviorSubject<string>('');
+  // pokemon: Observable<string> = this.dataSource.asObservable();
 
 
 
@@ -39,6 +41,10 @@ export class PokemonServicesService {
   getRequest(url:string):Observable<PokemonInterface>{ 
     return this.http.get<PokemonInterface>(url);
   }
+
+  // sendPokemonThroughComponents(pokemon:string){ 
+  //   this.dataSource.next(pokemon); 
+  // }
 
 
 

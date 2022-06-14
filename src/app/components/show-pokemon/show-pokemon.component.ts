@@ -1,5 +1,7 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PokemonInterface } from '../../Interfaces/pokemon.interface';
+import { PokemonServicesService } from '../../services/pokemon-services.service';
 
 @Component({
   selector: 'app-show-pokemon',
@@ -7,16 +9,48 @@ import { PokemonInterface } from '../../Interfaces/pokemon.interface';
 })
 export class ShowPokemonComponent implements OnInit {
 
-  @Input() pokemonSearched!:PokemonInterface;
+  pokemonSearched!:PokemonInterface; 
+  pokemon_state!:boolean; 
+
+  private pokemonObserver = {
+    next: (resp: PokemonInterface) => {
+      this.pokemonSearched = resp;
+
+    },
+    error: () => {
+      this.pokemon_state = true;
+    }
 
 
-  @Input() pokemon_state!:boolean; 
+  }
 
-  constructor() { }
+  constructor(
+    private pokemonService: PokemonServicesService,
+    private route: ActivatedRoute
+  ) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    this.route.params.subscribe(
+      (resp) => { 
+        this.searchPokemon(resp['id'])
+      }
+    )
+   
+
+  }
+
+  searchPokemon(input:string){ 
+    if (input == '') {
+      this.pokemon_state = true;
+    } else {
+      this.pokemonService.searchByName(input.toLowerCase()).subscribe(this.pokemonObserver);
+      this.pokemon_state = false;
+    }
 
   }
 
   
+
+
+
 }
