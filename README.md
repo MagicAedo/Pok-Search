@@ -1,5 +1,7 @@
 # PokemonShows
 
+You can check the page going to: https://stellular-torrone-de51ec.netlify.app/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
 
 ## Development server
